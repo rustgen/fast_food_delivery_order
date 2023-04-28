@@ -8,8 +8,8 @@
 		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
 		http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
 		http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
-    <include file="scripts/001_ddl_create_orders.sql" relativeToChangelogFile="true"/>
-    <include file="scripts/002_ddl_create_dishes.sql" relativeToChangelogFile="true"/>
-    <include file="scripts/003_ddl_insert_orders.sql" relativeToChangelogFile="true"/>
-    <include file="scripts/004_ddl_insert_dishes.sql" relativeToChangelogFile="true"/>
+    <include file="db/001_ddl_create_orders.sql" relativeToChangelogFile="true"/>
+    <include file="db/002_ddl_create_dishes.sql" relativeToChangelogFile="true"/>
+    <include file="db/003_ddl_insert_orders.sql" relativeToChangelogFile="true"/>
+    <include file="db/004_ddl_insert_dishes.sql" relativeToChangelogFile="true"/>
 </databaseChangeLog>

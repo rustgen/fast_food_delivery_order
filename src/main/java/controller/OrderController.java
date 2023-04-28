@@ -2,7 +2,8 @@ package controller;
 
 import dto.OrderDetailsDTO;
 import model.Order;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,8 +17,13 @@ import java.util.Optional;
 @RequestMapping("/api/orders")
 public class OrderController {
 
-    @Autowired
-    private OrderService orderService;
+    private static final Logger LOGGER = LoggerFactory.getLogger(OrderController.class.getSimpleName());
+
+    private final OrderService orderService;
+
+    public OrderController(OrderService orderService) {
+        this.orderService = orderService;
+    }
 
     @PostMapping
     public Order save(@RequestBody Order order) {

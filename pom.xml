@@ -21,24 +21,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <profiles>
-        <profile>
-            <id>test</id>
-            <properties>
-                <liquibase.config>db/liquibase_test.properties</liquibase.config>
-            </properties>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-        </profile>
-        <profile>
-            <id>production</id>
-            <properties>
-                <liquibase.config>db/liquibase.properties</liquibase.config>
-            </properties>
-        </profile>
-    </profiles>
-
     <dependencies>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -69,19 +51,6 @@
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
             <version>2.7.5</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.liquibase</groupId>
-            <artifactId>liquibase-core</artifactId>
-<!--            <version>3.6.2</version>-->
-<!--            <version>4.5.0</version>-->
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-jpa</artifactId>
-            <version>2.7.4</version>
         </dependency>
 
         <dependency>
@@ -132,33 +101,44 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+            <version>3.6.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.6.11.Final</version>
+        </dependency>
     </dependencies>
 
     <build>
         <plugins>
 
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${project.parent.version}</version>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <version>3.6.2</version>
+                <configuration>
+                    <propertyFile>liquibase.properties</propertyFile>
+                    <changeLogFile>src/main/resources/liquibase-changeLog.xml</changeLogFile>
+                    <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
+                    <clearCheckSums>true</clearCheckSums>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.postgresql</groupId>
+                        <artifactId>postgresql</artifactId>
+                        <version>42.5.0</version>
+                    </dependency>
+                </dependencies>
             </plugin>
 
             <plugin>
-                <groupId>org.liquibase</groupId>
-                <artifactId>liquibase-maven-plugin</artifactId>
-                <version>4.15.0</version>
-                <configuration>
-                    <propertyFile>${liquibase.config}</propertyFile>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>process-resources</phase>
-                        <goals>
-                            <goal>clearCheckSums</goal>
-                            <goal>update</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
 
             <plugin>
@@ -202,5 +182,6 @@
 
         </plugins>
     </build>
+
 
 </project>
