@@ -1,4 +1,4 @@
-package model;
+package fastfooddelivery.order.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

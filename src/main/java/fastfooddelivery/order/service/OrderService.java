@@ -1,13 +1,13 @@
-package service;
+package fastfooddelivery.order.service;
 
-import dto.OrderDetailsDTO;
+import fastfooddelivery.order.dto.OrderDetailsDTO;
 import lombok.AllArgsConstructor;
-import model.Dish;
-import model.Order;
+import fastfooddelivery.order.model.Dish;
+import fastfooddelivery.order.model.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-import repository.OrderRepository;
+import fastfooddelivery.order.repository.OrderRepository;
 
 import java.util.List;
 import java.util.Optional;

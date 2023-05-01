@@ -1,4 +1,4 @@
-package main;
+package fastfooddelivery.order;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

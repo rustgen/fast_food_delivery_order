@@ -1,10 +1,10 @@
-package dto;
+package fastfooddelivery.order.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import model.Dish;
-import model.Order;
+import fastfooddelivery.order.model.Dish;
+import fastfooddelivery.order.model.Order;
 
 import javax.validation.constraints.Size;
 import java.util.List;

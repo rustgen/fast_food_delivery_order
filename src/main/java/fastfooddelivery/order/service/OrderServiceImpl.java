@@ -1,8 +1,8 @@
-package service;
+package fastfooddelivery.order.service;
 
-import dto.OrderDetailsDTO;
-import model.Dish;
-import model.Order;
+import fastfooddelivery.order.dto.OrderDetailsDTO;
+import fastfooddelivery.order.model.Dish;
+import fastfooddelivery.order.model.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
@@ -12,7 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import repository.OrderRepository;
+import fastfooddelivery.order.repository.OrderRepository;
 
 import java.util.ArrayList;
 import java.util.Collections;

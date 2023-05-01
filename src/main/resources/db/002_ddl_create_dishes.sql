@@ -1,4 +1,4 @@
-create TABLE IF NOT EXISTS dishes (
+create TABLE IF NOT EXISTS dish (
   id serial primary key,
   name VARCHAR,
   description VARCHAR,
