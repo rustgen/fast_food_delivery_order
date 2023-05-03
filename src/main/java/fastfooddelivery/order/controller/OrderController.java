@@ -3,8 +3,6 @@ package fastfooddelivery.order.controller;
 import fastfooddelivery.order.dto.OrderDetailsDTO;
 import fastfooddelivery.order.model.Order;
 import fastfooddelivery.order.service.OrderService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,8 +14,6 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/orders")
 public class OrderController {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(OrderController.class.getSimpleName());
 
     private final OrderService orderService;
 
@@ -51,7 +47,9 @@ public class OrderController {
         if (orderById.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        orderService.markOrderAsCompleted(id);
+        Order order = orderById.get();
+        order.setCompleted(true);
+        orderService.createOrder(order);
         return ResponseEntity.ok().build();
     }
 

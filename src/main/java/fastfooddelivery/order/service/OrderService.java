@@ -19,6 +19,7 @@ public abstract class OrderService {
     OrderRepository orderRepository;
 
     public Order createOrder(Order order) {
+        order.setCompleted(false);
         return orderRepository.save(order);
     }
 
@@ -26,10 +27,6 @@ public abstract class OrderService {
 
     public Optional<Order> findOrderById(int id) {
         return orderRepository.findById(id);
-    }
-
-    public boolean markOrderAsCompleted(int id) {
-        return orderRepository.markOrderAsCompleted(id);
     }
 
     public List<Order> getAllOrders() {

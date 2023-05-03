@@ -57,16 +57,6 @@ public class OrderServiceImpl extends OrderService {
         ).getBody());
     }
 
-    public boolean markOrderAsCompleted(int id) {
-        ResponseEntity<Void> response = client.exchange(
-                String.format("%s/markAsCompleted?id=%s", url, id),
-                HttpMethod.PUT,
-                null,
-                Void.class
-        );
-        return response.getStatusCode() == HttpStatus.OK;
-    }
-
     public List<Order> getAllOrders() {
         List<Order> body = client.exchange(
                 url, HttpMethod.GET, null,

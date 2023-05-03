@@ -9,7 +9,5 @@ import java.util.List;
 @Repository
 public interface OrderRepository extends CrudRepository<Order, Integer> {
 
-    boolean markOrderAsCompleted(int id);
-
     List<Order> findAll();
 }
