@@ -33,9 +33,9 @@ public class OrderController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Order> findById(@PathVariable int id) {
-        Optional<Order> person = orderService.findOrderById(id);
+        Optional<Order> order = orderService.findOrderById(id);
         return new ResponseEntity<Order>(
-                person.orElseThrow(() -> new ResponseStatusException(
+                order.orElseThrow(() -> new ResponseStatusException(
                         HttpStatus.NOT_FOUND, "Order with this id wasn't found. Please, check the input.")),
                 HttpStatus.OK
         );

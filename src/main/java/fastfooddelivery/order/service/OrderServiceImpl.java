@@ -58,12 +58,29 @@ public class OrderServiceImpl extends OrderService {
     }
 
     public List<Order> getAllOrders() {
-        List<Order> body = client.exchange(
+        List<Order> orders = client.exchange(
                 url, HttpMethod.GET, null,
                 new ParameterizedTypeReference<List<Order>>() {
                 }
         ).getBody();
-        return body == null ? Collections.emptyList() : body;
+
+        if (orders == null) {
+            return Collections.emptyList();
+        }
+
+        for (Order order : orders) {
+            List<Dish> dishes = new ArrayList<>();
+            for (Dish dish : order.getDishes()) {
+                Dish dishWithDetails = client.getForObject(
+                        "http://localhost:8080/api/dishes/" + dish.getId(),
+                        Dish.class
+                );
+                dishes.add(dishWithDetails);
+            }
+            order.setDishes(dishes);
+        }
+
+        return orders;
     }
 
     public OrderDetailsDTO getOrderDetails(Order order) {
