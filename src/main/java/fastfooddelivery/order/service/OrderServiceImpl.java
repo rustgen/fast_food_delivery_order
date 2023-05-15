@@ -72,7 +72,7 @@ public class OrderServiceImpl extends OrderService {
             List<Dish> dishes = new ArrayList<>();
             for (Dish dish : order.getDishes()) {
                 Dish dishWithDetails = client.getForObject(
-                        "http://localhost:8080/api/dishes/" + dish.getId(),
+                        String.format("http://localhost:8081/dish/{%d}", dish.getId()),
                         Dish.class
                 );
                 dishes.add(dishWithDetails);
